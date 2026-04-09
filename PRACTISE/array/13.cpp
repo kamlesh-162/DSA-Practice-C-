@@ -14,7 +14,7 @@ int main(){
        if(sum<0){sum=0;}
    }
 
-   cout<<maxi;
+   cout<<"="<<maxi;
    
   return 0;
 }
