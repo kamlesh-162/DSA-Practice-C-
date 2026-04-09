@@ -13,6 +13,7 @@ using namespace std;
          if(ch=='C'){return 100;}
          if(ch=='D'){return 500;}
          if(ch=='M'){return 1000;}
+         return 0;
     }
     int romanToInt(string s) {
        
@@ -20,8 +21,8 @@ using namespace std;
             return 0;
         }
         int sum=0;
-      
-        for(int i=0;i<s.length();i++){
+       int m=s.length();
+        for(int i=0;i<m;i++){
              int c=print(s[i]);
              sum=sum+c;
 
