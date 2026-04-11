@@ -15,6 +15,7 @@ int spell(int n){
    n=n/10;
    
    spell(n);
+   
    cout<<arr[digit]<<" ";
 
 }
@@ -26,14 +27,7 @@ int main(){
    cout<<" enter num=";
    cin>>n;
    spell(n);
-  // int ans=0;
-  //  while(n!=0){
-  //   int bit=n%10;
-    
-  //   n=n/10;
-  //   cout<<arr[bit]<<" ";
-
-  //  }
+ 
   
    
 
