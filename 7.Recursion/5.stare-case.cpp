@@ -1,5 +1,5 @@
 //
-//   f(n)=F(n-1)+F(n-2)
+//   
 //   
 
 #include<iostream>
