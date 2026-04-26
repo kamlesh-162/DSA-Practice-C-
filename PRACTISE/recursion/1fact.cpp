@@ -1,79 +1,52 @@
 #include<iostream>
 using namespace std;
- void merge(int arr[],int s,int e){
-  int m=(s+e)/2;
 
-  int length1=m-s+1;
-  int length2=e-m;
-
- int arr1[length1]={0};
- int arr2[length2]={0};
-
- int mainindex=s;
- for (int i = 0; i < length1; i++){
-       arr1[0]=arr[mainindex++];
- }
- 
- mainindex=m+1;
- for (int i = 0; i < length2; i++){
-       arr2[0]=arr[mainindex++];
- }
-
-int index1=0;
-int index2=0;
-mainindex=s;
-while (index1<length1 && index2<length2)
-{
-  if (arr1[index1]>arr2[index2])  {
-    arr[mainindex++]=arr2[index2++];
+int partition(int arr[],int s,int e){
+  int pivoat=arr[s];
+  int cnt=0;
+  for (int i = s+1; i <= e; i++){
+    if (arr[i]<=pivoat) {
+      cnt++;
+    }
   }
-  else if (arr1[index1]<arr2[index2])  {
-    arr[mainindex++]=arr1[index1++];
-   }
-}
-while (index2<length2){
-  arr[mainindex++]=arr2[index2++];
-}
-while (index1<length1){
-  arr[mainindex++]=arr1[index1++];
-}
-
-
- 
-
-
- }
-void mergesort(int arr[],int s,int e){
-
-  if (s>e) {
-   return;  // base case
+  int pivoatindex=cnt+s;
+  swap(arr[s],arr[pivoatindex]);
+  int i=s,j=e;
+  while (i<pivoatindex && j>pivoatindex)
+  {
+    while (arr[i]<=pivoat){
+      i++;
+    }
+    while (arr[j]>pivoat){
+      j--;
+    }
+    if(i<pivoatindex && j>pivoatindex) {
+      swap(arr[i++],arr[j--]);
+    }
+    
   }
-
-  int m=(s+e)/2;
-   
-  merge(arr,s,m);//left
-  merge(arr,m+1,e);//right
-
-  merge(arr,s,e);
-
-
+  return pivoatindex;
   
- 
   
 }
-  
+void quicksort(int arr[],int s,int e){
 
- int main(){
-  
-    int arr[10]={66,77,33,5,4,2,9,8,23,45};
-   int n=10;
+     if (s>=e)return ;
+     int p=partition(arr,s,e);
 
-   mergesort(arr,0,n-1);
-   for (int i = 0; i < n; i++)
-   {
-    cout<<" "<<arr[i];
+     quicksort(arr,s,p-1);
+     quicksort(arr,p+1,e);
+}
+
+int main(){
+   int arr[]={88,33,66,11,44,99,22,33};
+   int n=8;
+   quicksort(arr,0,n-1);
+
+   cout<<"sorted array  :  ";
+   for (int i = 0; i < n; i++) {
+      cout<<arr[i]<<" ";
    }
    
-   
-  return 0;
+   return 0;
 }

@@ -42,33 +42,32 @@ void merge(int arr[],int s,int e){
      arr[MainArrayIndex++]=second[index2++];
   }
   
-  
+  delete[] first;
+  delete[] second;
   
 }
 
  void mergesort(int arr[],int s,int e){
 
   // base case
-  if (s>e){  return;  }
+  if (s>=e)return;
   
   int mid=(s+e)/2;
 
-  // left part sort karna he
-  merge(arr,s,mid);
+  mergesort(arr,s,mid);  // left part sort karna he
 
-  // rightpart sort karna he
-  merge(arr,mid+1,e);
+  mergesort(arr,mid+1,e);// rightpart sort karna he
 
-  //merge 
-  merge(arr,s,e);
+  merge(arr,s,e);   //merge 
 
  }
 
 int main(){
-   int arr[10]={66,77,33,5,4,2,9,8,23,45};
-   int n=10;
+   int arr[8]={66,77,33,5,9,8,23,45};
+   int n=8;
 
    mergesort(arr,0,n-1);
+   cout<<"sorted array:  ";
    for (int i = 0; i < n; i++)
    {
     cout<<" "<<arr[i];

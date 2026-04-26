@@ -40,7 +40,7 @@ int partition(int arr[],int s,int e){
 void quicksort(int arr[],int s,int e){
 
   //base case
-  if(s>e){ return;}
+  if(s>=e){ return;}
 
   //partition
   int p=partition(arr,s,e);
