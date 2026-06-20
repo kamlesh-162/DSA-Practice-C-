@@ -1,12 +1,9 @@
-//    consturcter call itself when objet is created
-
-
 
 #include<iostream>
 using namespace std;
 
 class hero{
-  
+  n
   int health;
 
   public:
