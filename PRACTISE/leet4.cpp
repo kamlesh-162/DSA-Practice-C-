@@ -2,19 +2,45 @@
 using namespace std;
 
 int main(){
-   int arr[4]={2,2,4,4};
-   int num[5]={2,2,2,4,4};
-   float s1=0,s2=0;
-   for (int i = 0; i < 4; i++)
+   int arr1[4]={2,2,4,4};
+   int arr2[5]={2,2,2,4,4};
+   int n=9;
+   int i=0,j=0;
+   while (i!=4)
    {
-    s1=s1+arr[i];
+      if (arr1[i]>arr2[j])
+      {
+        swap(arr1[i++],arr2[j++]);
+      }else{
+        i++;
+      }
+      
+   }
+    for (int i = 0; i < 5; i++)
+   {
+     for (int j = i+1; j < 5; j++)
+     {
+      if (arr2[i]>arr2[j])
+      {
+        swap(arr2[i],arr2[j]);
+      }
+      
+     }
+     
    }
    for (int i = 0; i < 5; i++)
    {
-    s2=s2+num[i];
+    cout<<"1::"<<arr1[i]<<"2::"<<arr2[i]<<endl;
    }
-  
-   float ans=(s1+s2)/9;
-   cout<<ans;
+   
+   if (n%2==0)
+   {
+    /* code */
+   }else{
+    cout<<
+   }
+   
+   
+   
   return 0;
 }
