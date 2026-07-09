@@ -14,6 +14,16 @@ class Node{
     this->next=NULL;
 
   }
+
+  //destructer
+  ~Node(){
+    int val=this->data;
+    if(next!=NULL){
+      delete next;
+      next=NULL;
+    }
+    cout<<"memory free for node with data "<<val<<endl;
+  }
 };
 
 void InsertAtHead(Node* &head,int d){
@@ -67,6 +77,54 @@ void InsertAtPostion(Node* &head,Node* &tail,int d,int position){
   
 }
 
+void Deletion(Node* &head,Node* &tail,int position){
+  
+  // handaling case of only one node
+  if(head == tail){
+    delete head;
+    head = NULL;
+    tail = NULL;
+    return;
+  }
+  //deletion at head
+  if (position==1) {
+    Node* temp=head;
+    temp->next->prev=NULL;
+    head=temp->next;
+    temp->next=NULL;
+    delete temp;
+  }else{
+    //deleting position
+   Node* current=head;
+   Node* privious=NULL;
+
+   int count=1;
+   while(count<position){
+    privious=current;
+    current=current->next;
+    count++;
+   }
+   if (current->next==NULL){
+   current->prev=NULL;
+   privious->next=NULL;
+   tail=privious;  
+   delete current; 
+    return;   
+   }
+   
+
+   current->prev=NULL;
+   privious->next=current->next;
+   current->next->prev=privious;
+   current->next=NULL;
+   delete current;
+
+
+    
+  }
+  
+}
+
 void print(Node* head){
   Node* temp=head;
   while (temp!=NULL){
@@ -112,6 +170,18 @@ int main(){
  
   cout<<"Enter at position(middel) :";
    InsertAtPostion(head,tail, 111,3);
+   print(head);
+   
+   cout<<"Dletion  at head :"<<endl;
+   Deletion(head,tail, 1);
+   print(head);
+ 
+   cout<<"Dletion  at middle :"<<endl;
+   Deletion(head,tail, 3);
+   print(head);
+ 
+   cout<<"Dletion  at tail :"<<endl;
+   Deletion(head,tail, 4);
    print(head);
  
    
