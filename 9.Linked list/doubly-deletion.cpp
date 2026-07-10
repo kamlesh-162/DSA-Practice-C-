@@ -86,7 +86,7 @@ void Deletion(Node* &head,Node* &tail,int position){
     tail = NULL;
     return;
   }
-  //deletion at head
+  //deletion at headg
   if (position==1) {
     Node* temp=head;
     temp->next->prev=NULL;
