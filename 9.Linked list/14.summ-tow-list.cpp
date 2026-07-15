@@ -1,5 +1,7 @@
-// input=  
-//output=  
+// input=  head1 4 - 5 - 3
+//         head2 3 - 4 - 1
+//output=         
+//               7 - 9 - 4
 
 #include<iostream>
 #include<map>
